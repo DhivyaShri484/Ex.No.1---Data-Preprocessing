@@ -32,7 +32,7 @@ Normalizing the data
 Splitting the data into test and train
 
 ##PROGRAM:
-```
+
 import pandas as pd
 import io
 from sklearn.preprocessing import StandardScaler 
@@ -86,7 +86,7 @@ print(X_test)
 print("Size of X_test: ",len(X_test))
 ```
 
-
+```
 ##OUTPUT:
 ##Dataset and Its Properties
 ![nn1](https://user-images.githubusercontent.com/94505585/229990709-ed819ea3-8398-4758-88fa-417056732052.jpg)
