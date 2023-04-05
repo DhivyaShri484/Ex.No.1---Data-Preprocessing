@@ -32,10 +32,87 @@ Normalizing the data
 Splitting the data into test and train
 
 ##PROGRAM:
-/Write your code here/
+```
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler 
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+```
+```
+#read the dataset
+df=pd.read_csv('/content/Churn_Modelling (1).csv')
+df
+```
+```
+#drop unwanted columns
+df.drop('RowNumber',axis=1,inplace=True)
+df.drop('CustomerId',axis=1,inplace=True)
+df.drop('Surname',axis=1,inplace=True)
+df.drop('Geography',axis=1,inplace=True)
+df.drop('Age',axis=1,inplace=True)
+df.drop('Gender',axis=1,inplace=True)
+df
+```
+```
+#checking for null, duplicates, outliers in lasrt column
+df.isnull().sum()
+df.duplicated()
+df['Exited'].describe()
+```
+```
+#normalising data to normal distribution
+sc=MinMaxScaler()
+df2=pd.DataFrame(sc.fit_transform(df),columns=['CreditScore','Tenure','Balance','NumOfProducts','HasCrCard','IsActiveMember','EstimatedSalary','Exited'])
+df2
+```
+```
+#split dataset
+x=df2.iloc[:,:-1].values #all rows from all except last column
+x
+```
+```
+y=df2.iloc[:,-1].values #all rows from only last column
+y
+```
+```
+##creating training and test data
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+print(X_train)
+print("Size of X_train: ",len(X_train))
+```
+```
+print(X_test)
+print("Size of X_test: ",len(X_test))
+```
+
 
 ##OUTPUT:
-/ Show the result/
+##Dataset and Its Properties
+![nn1](https://user-images.githubusercontent.com/94505585/229990709-ed819ea3-8398-4758-88fa-417056732052.jpg)
+
+<img width="467" alt="image" src="https://user-images.githubusercontent.com/94505585/229993372-c584b5df-2a6a-443c-86fa-be47d00bab91.png">
+
+
+![nn3](https://user-images.githubusercontent.com/94505585/229990856-84991772-254f-4f41-9066-6508e0713b31.jpg)
+
+##Normalised Dataset
+![nn4](https://user-images.githubusercontent.com/94505585/229991923-4904b51e-0f5f-461f-9243-8b2a5ac8c365.jpg)
+
+
+##X & Y Column Data
+![nn5](https://user-images.githubusercontent.com/94505585/229991849-905f60c6-a881-4891-af34-0df7ffa2c6f2.jpg)
+
+![nn6](https://user-images.githubusercontent.com/94505585/229991210-8cd921c4-935d-41fa-83dd-94005054898e.jpg)
+
+##Training Data 
+![nn7](https://user-images.githubusercontent.com/94505585/229991382-cf7d2c31-3399-47b1-9a3b-d75d2a768519.jpg)
+
+##Test Data
+![nn8](https://user-images.githubusercontent.com/94505585/229991426-383c045a-cbeb-4959-8976-72e3cb93c1d9.jpg)
+
+
+
 
 ##RESULT
-/Type your result here/
+Thus, the Data preprocessing is performed over a data set successfully.
