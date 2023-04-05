@@ -32,6 +32,7 @@ Another aspect is that the data set should be formatted in such a way that more 
 6. Splitting the data into test and train
 
 ## PROGRAM:
+```
 python
 import pandas as pd
 import io
@@ -88,6 +89,7 @@ print("Size of X_train: ",len(X_train))
 python
 print(X_test)
 print("Size of X_test: ",len(X_test))
+```
 
 ##OUTPUT:
 ##Dataset and Its Properties
