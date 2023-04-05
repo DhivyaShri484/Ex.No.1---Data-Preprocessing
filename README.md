@@ -23,7 +23,7 @@ For achieving better results from the applied model in Machine Learning projects
 Another aspect is that the data set should be formatted in such a way that more than one Machine Learning and Deep Learning algorithm are executed in one data set, and best out of them is chosen.
 
 
-##ALGORITHM:
+###ALGORITHM:
 Importing the libraries
 Importing the dataset
 Taking care of missing data
@@ -32,20 +32,21 @@ Normalizing the data
 Splitting the data into test and train
 
 ##PROGRAM:
-
+```
 import pandas as pd
 import io
 from sklearn.preprocessing import StandardScaler 
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 ```
+###read the dataset
 ```
-#read the dataset
 df=pd.read_csv('/content/Churn_Modelling (1).csv')
 df
 ```
+
+###drop unwanted columns
 ```
-#drop unwanted columns
 df.drop('RowNumber',axis=1,inplace=True)
 df.drop('CustomerId',axis=1,inplace=True)
 df.drop('Surname',axis=1,inplace=True)
@@ -54,38 +55,36 @@ df.drop('Age',axis=1,inplace=True)
 df.drop('Gender',axis=1,inplace=True)
 df
 ```
-```
+
 #checking for null, duplicates, outliers in lasrt column
+```
 df.isnull().sum()
 df.duplicated()
 df['Exited'].describe()
 ```
-```
+
 #normalising data to normal distribution
+```
 sc=MinMaxScaler()
 df2=pd.DataFrame(sc.fit_transform(df),columns=['CreditScore','Tenure','Balance','NumOfProducts','HasCrCard','IsActiveMember','EstimatedSalary','Exited'])
 df2
 ```
-```
+
 #split dataset
+```
 x=df2.iloc[:,:-1].values #all rows from all except last column
 x
-```
-```
+
 y=df2.iloc[:,-1].values #all rows from only last column
 y
 ```
-```
 ##creating training and test data
+```
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 print(X_train)
 print("Size of X_train: ",len(X_train))
-```
-```
 print(X_test)
 print("Size of X_test: ",len(X_test))
-```
-
 ```
 ##OUTPUT:
 ##Dataset and Its Properties
@@ -110,9 +109,6 @@ print("Size of X_test: ",len(X_test))
 
 ##Test Data
 ![nn8](https://user-images.githubusercontent.com/94505585/229991426-383c045a-cbeb-4959-8976-72e3cb93c1d9.jpg)
-
-
-
 
 ##RESULT
 Thus, the Data preprocessing is performed over a data set successfully.
